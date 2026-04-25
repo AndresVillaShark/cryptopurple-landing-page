@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoPurple | Buy & Trade Crypto Safely</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple: #7c3aed;
+            --purple-dark: #5b21b6;
+            --purple-light: #a78bfa;
+            --green: #10b981;
+            --red: #ef4444;
+            --gray-900: #111827;
+            --gray-800: #1f2937;
+            --gray-700: #374151;
+            --gray-600: #4b5563;
+            --gray-500: #6b7280;
+            --gray-400: #9ca3af;
+            --gray-100: #f3f4f6;
+            --gray-50: #f9fafb;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-900);
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border: 1px solid var(--gray-600);
+        }
+
+        .btn-ghost:hover {
+            background: var(--gray-800);
+        }
+
+        .btn-primary {
+            background: var(--purple);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--purple-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, white 0%, var(--purple-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Live Prices Ticker */
+        .ticker {
+            background: var(--gray-800);
+            padding: 1rem 2rem;
+            overflow: hidden;
+            border-top: 1px solid var(--gray-700);
+            border-bottom: 1px solid var(--gray-700);
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: 3rem;
+            animation: ticker 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ticker-symbol {
+            font-weight: 600;
+        }
+
+        .ticker-price {
+            color: var(--gray-400);
+        }
+
+        .ticker-change {
+            font-weight: 600;
+        }
+
+        .positive { color: var(--green); }
+        .negative { color: var(--red); }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .features-subtitle {
+            text-align: center;
+            color: var(--gray-400);
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--gray-800);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--gray-700);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--purple);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--gray-400);
+        }
+
+        /* Crypto Cards Section */
+        .crypto-grid {
+            padding: 5rem 2rem;
+            background: var(--gray-800);
+            border-top: 1px solid var(--gray-700);
+            border-bottom: 1px solid var(--gray-700);
+        }
+
+        .crypto-grid h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .crypto-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .crypto-card {
+            background: var(--gray-900);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--gray-700);
+            transition: all 0.3s;
+        }
+
+        .crypto-card:hover {
+            border-color: var(--purple);
+        }
+
+        .crypto-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .crypto-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .crypto-sym {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 2rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-800);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--gray-700);
+        }
+
+        footer p {
+            color: var(--gray-500);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">CryptoPurple</div>
+        <ul class="nav-links">
+            <li><a href="#markets">Markets</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#learn">Learn</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <a href="#" class="btn btn-ghost">Log In</a>
+            <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Buy & Trade Crypto Safely</h1>
+        <p>Join millions of users worldwide who trust CryptoPurple for secure, fast, and low-cost cryptocurrency trading. Start your journey today.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="#" class="btn btn-ghost">View Markets</a>
+        </div>
+    </section>
+
+    <!-- Live Price Ticker -->
+    <div class="ticker">
+        <div class="ticker-content">
+            <div class="ticker-item">
+                <span class="ticker-symbol">BTC/USD</span>
+                <span class="ticker-price">$67,432.18</span>
+                <span class="ticker-change positive">+2.34%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">ETH/USD</span>
+                <span class="ticker-price">$3,521.90</span>
+                <span class="ticker-change positive">+1.87%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">SOL/USD</span>
+                <span class="ticker-price">$178.45</span>
+                <span class="ticker-change positive">+5.12%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">ADA/USD</span>
+                <span class="ticker-price">$0.58</span>
+                <span class="ticker-change negative">-1.23%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">DOT/USD</span>
+                <span class="ticker-price">$7.82</span>
+                <span class="ticker-change positive">+0.94%</span>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="ticker-item">
+                <span class="ticker-symbol">BTC/USD</span>
+                <span class="ticker-price">$67,432.18</span>
+                <span class="ticker-change positive">+2.34%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">ETH/USD</span>
+                <span class="ticker-price">$3,521.90</span>
+                <span class="ticker-change positive">+1.87%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">SOL/USD</span>
+                <span class="ticker-price">$178.45</span>
+                <span class="ticker-change positive">+5.12%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">ADA/USD</span>
+                <span class="ticker-price">$0.58</span>
+                <span class="ticker-change negative">-1.23%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">DOT/USD</span>
+                <span class="ticker-price">$7.82</span>
+                <span class="ticker-change positive">+0.94%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Why Choose CryptoPurple</h2>
+        <p class="features-subtitle">Everything you need to trade with confidence</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Bank-Grade Security</h3>
+                <p>Your assets are protected by industry-leading security measures including cold storage and multi-factor authentication.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Execute trades in milliseconds with our high-performance matching engine built for speed and reliability.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Low Fees</h3>
+                <p>Trade with confidence knowing our fees are among the lowest in the industry. No hidden costs, ever.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Trading</h3>
+                <p>Trade on the go with our full-featured mobile app for iOS and Android. Your portfolio, everywhere.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Learn & Earn</h3>
+                <p>Start with our free educational courses and earn crypto as you learn about blockchain and DeFi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎧</div>
+                <h3>24/7 Support</h3>
+                <p>Our dedicated support team is always available to help you with any questions or concerns.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Cryptocurrencies -->
+    <section class="crypto-grid" id="markets">
+        <h2>Trade Popular Cryptocurrencies</h2>
+        <div class="crypto-cards">
+            <div class="crypto-card">
+                <div class="crypto-icon">₿</div>
+                <div class="crypto-name">Bitcoin</div>
+                <div class="crypto-sym">BTC</div>
+            </div>
+            <div class="crypto-card">
+                <div class="crypto-icon">Ξ</div>
+                <div class="crypto-name">Ethereum</div>
+                <div class="crypto-sym">ETH</div>
+            </div>
+            <div class="crypto-card">
+                <div class="crypto-icon">◎</div>
+                <div class="crypto-name">Solana</div>
+                <div class="crypto-sym">SOL</div>
+            </div>
+            <div class="crypto-card">
+                <div class="crypto-icon">Ψ</div>
+                <div class="crypto-name">Cardano</div>
+                <div class="crypto-sym">ADA</div>
+            </div>
+            <div class="crypto-card">
+                <div class="crypto-icon">●</div>
+                <div class="crypto-name">Polkadot</div>
+                <div class="crypto-sym">DOT</div>
+            </div>
+            <div class="crypto-card">
+                <div class="crypto-icon"></div>
+                <div class="crypto-name">Polygon</div>
+                <div class="crypto-sym">MATIC</div>
+            </div>
+            <div class="crypto-card">
+                <div class="crypto-icon"></div>
+                <div class="crypto-name">Avalanche</div>
+                <div class="crypto-sym">AVAX</div>
+            </div>
+            <div class="crypto-card">
+                <div class="crypto-icon"></div>
+                <div class="crypto-name">Cosmos</div>
+                <div class="crypto-sym">ATOM</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="about">
+        <h2>Start Your Crypto Journey</h2>
+        <p>Create your free account in minutes and get $10 in Bitcoin when you make your first purchase.</p>
+        <a href="#" class="btn btn-primary">Create Free Account</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CryptoPurple. All rights reserved. Not financial advice. Trade responsibly.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "cryptopurple-landing-page",
+  "version": "1.0.0",
+  "description": "A modern crypto exchange landing page",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "dev": "open http://localhost:8080"
+  },
+  "keywords": ["crypto", "landing-page", "website"],
+  "author": "Zendra",
+  "license": "MIT"
+}
